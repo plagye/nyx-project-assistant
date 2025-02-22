@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYx - AI Project Generator</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="#" id="generate-data">GENERATE DATA</a>
+            <a href="#" id="how-to-prompt">HOW TO PROMPT</a>
+            <a href="#" id="about">ABOUT</a>
+        </div>
+        <div class="logo">
+            &lt;NYx&gt; <!-- Logo styled as text -->
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="main-container">
+        <!-- Output Section -->
+        <div class="output-box" id="output-box">
+            <!-- Placeholder for AI-generated content -->
+        </div>
+
+        <!-- Input Section -->
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="input" />
+            <button id="send-btn">send</button>
+        </div>
+    </div>
+
+    <!-- JavaScript to handle user interaction -->
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

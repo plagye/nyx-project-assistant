@@ -1,0 +1,109 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Black background */
+    color: white; /* White text */
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline; /* Highlight on hover */
+}
+
+.logo {
+    font-size: 24px;
+    color: #4b6ef5; /* Blue color for logo */
+}
+
+/* Main Container */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 50px); /* Full height minus navbar */
+}
+
+/* Output Box */
+.output-box {
+    width: 80%;
+    height: 50%;
+    background-color: #666; /* Gray background for output area */
+    margin-bottom: 20px;
+}
+
+/* Input Container */
+.input-container {
+    display: flex;
+}
+
+#user-input {
+    width: 70%;
+    padding: 10px;
+    border-radius: 20px; /* Rounded corners */
+    border: none;
+}
+
+#send-btn {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border-radius: 20px; /* Rounded corners for button */
+    border: none;
+    background-color: #4b6ef5; /* Blue button color */
+    color: white;
+}
+
+#send-btn:hover {
+    background-color: #3a54c9; /* Darker blue on hover */
+}
+
+/* Output Box - Chat Window */
+.output-box {
+    width: 80%;
+    height: 50%;
+    background-color: #666; /* Gray background for output area */
+    margin-bottom: 20px;
+    overflow-y: auto; /* Enable scrolling for long content */
+    padding: 10px;
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Individual Chat Message Styling */
+.message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.user-message {
+    background-color: #4b6ef5; /* Blue for user input */
+    color: white;
+    text-align: right; /* Align user messages to the right */
+}
+
+.ai-message {
+    background-color: #333; /* Darker gray for AI responses */
+    color: white;
+    text-align: left; /* Align AI messages to the left */
+}
