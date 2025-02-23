@@ -3,26 +3,31 @@ document.getElementById("send-btn").addEventListener("click", async () => {
     const userInput = document.getElementById("user-input").value;
 
     if (!userInput.trim()) {
-        return; // Ignore empty input
+        alert("Input cannot be empty!"); // Provide user feedback
+        return;
     }
 
-    // Display user's message in the chat window
     addMessageToChat(userInput, "user-message");
 
-    // Send input to Flask backend via POST request
-    const response = await fetch("/generate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ input_text: userInput }),
-    });
+    try {
+        const response = await fetch("/generate", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ input_text: userInput }),
+        });
 
-    // Parse and display the AI's response in the chat window
-    const data = await response.json();
-    const aiMessage = data.generated_text || "Error generating response.";
-    
-    addMessageToChat(aiMessage, "ai-message");
+        if (!response.ok) {
+            throw new Error("Failed to fetch response from server");
+        }
 
-    // Clear the input field after sending
+        const data = await response.json();
+        const aiMessage = data.generated_text || "Error generating response.";
+        addMessageToChat(aiMessage, "ai-message");
+    } catch (error) {
+        console.error("Error:", error);
+        addMessageToChat("An error occurred while generating text.", "ai-message");
+    }
+
     document.getElementById("user-input").value = "";
 });
 
