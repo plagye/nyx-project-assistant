@@ -23,7 +23,7 @@ def generate():
         return jsonify({'error': 'No input provided'}), 400
     
     try:
-        result = generator(user_input, max_length=512, num_return_sequences=1, temperature=0.1, top_k=50, top_p=0.9)
+        result = generator(user_input, max_length=1024, num_return_sequences=1, temperature=0.6, top_k=50, top_p=0.9, truncation=True)
         return jsonify({"generated_text": result[0]["generated_text"]})
     except Exception as e:
         print(f"Error during generation: {e}")
