@@ -10,7 +10,7 @@ MODEL_NAME = os.getenv("MODEL_NAME", 'deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B'
 MAX_LENGTH = int(os.getenv("MAX_LENGTH", 1024))
 TEMPERATURE = float(os.getenv("TEMPERATURE", 0.6))
 FLASK_ENV = os.getenv("FLASK_ENV", 'production')
-PROMPT = os.getenv("PROMPT", 'The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly.')
+PROMPT = os.getenv("PROMPT", '')
 
 def create_app():
     app = Flask(__name__)
@@ -37,7 +37,7 @@ def create_app():
         if not user_input.strip():
             return jsonify({'error': 'No input provided'}), 400
         
-        formatted_input = f"{PROMPT}\n USER INPUT:{user_input}"
+        formatted_input = f"{PROMPT}\nUSER INPUT: {user_input}\nASSISTANT:"
 
         try:
             result = generator(
@@ -45,8 +45,8 @@ def create_app():
                 max_length=MAX_LENGTH,
                 num_return_sequences=1,
                 temperature=TEMPERATURE, 
-                top_k=50, 
-                top_p=0.9, 
+                top_k=30, 
+                top_p=0.7, 
                 truncation=True
             )
             return jsonify({"generated_text": result[0]["generated_text"]})

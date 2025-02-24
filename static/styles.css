@@ -45,14 +45,6 @@ body {
     height: calc(100vh - 50px); /* Full height minus navbar */
 }
 
-/* Output Box */
-.output-box {
-    width: 80%;
-    height: 50%;
-    background-color: #666; /* Gray background for output area */
-    margin-bottom: 20px;
-}
-
 /* Input Container */
 .input-container {
     display: flex;
@@ -80,8 +72,11 @@ body {
 
 /* Output Box - Chat Window */
 .output-box {
+    display: flex;
+    flex-direction: column; /* Stack messages vertically */
+    align-items: flex-start; /* Align AI messages to the left by default */
     width: 80%;
-    height: 50%;
+    height: 70%;
     background-color: #666; /* Gray background for output area */
     margin-bottom: 20px;
     overflow-y: auto; /* Enable scrolling for long content */
@@ -91,19 +86,25 @@ body {
 
 /* Individual Chat Message Styling */
 .message {
-    margin-bottom: 10px;
+    display: inline-block;
     padding: 10px;
+    margin-bottom: 10px;
     border-radius: 5px;
+    max-width: 70%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .user-message {
     background-color: #4b6ef5; /* Blue for user input */
     color: white;
     text-align: right; /* Align user messages to the right */
+    align-self: flex-end;
 }
 
 .ai-message {
     background-color: #333; /* Darker gray for AI responses */
     color: white;
     text-align: left; /* Align AI messages to the left */
+    align-self: flex-start;
 }
